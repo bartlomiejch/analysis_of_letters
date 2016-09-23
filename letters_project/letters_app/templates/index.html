@@ -1,11 +1,17 @@
 <h3>Zamieść list do przeanalizowania.</h3>
 <form action = '' method = 'post'>{%  csrf_token  %}
-    <label for='title'>Tytuł</label>
+    <!--<label for='title'>Tytuł</label>
     <p><input type="text" name="title" id="title"></p>
 	<label for="text">Tekst</label>
 	<p><textarea id="text" name="text" rows="7" cols="50"></textarea></p>
 	<label for='author'>Autor</label>
-    <p><input type="text" name="author" id="title"></p>
+    <p><input type="text" name="author" id="title"></p>-->
+    <p>{{ form.title.label }}</p>
+    <p>{{ form.title }}</p>
+    <p>{{ form.text.label }}</p>
+    <p>{{ form.text }}</p>
+    <p>{{ form.author.label }}</p>
+    <p>{{ form.author }}</p>
 
 
 <div class='formactions'>
