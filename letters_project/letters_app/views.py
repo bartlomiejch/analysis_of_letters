@@ -1,5 +1,4 @@
 import string
-import operator
 from collections import Counter
 from django.shortcuts import render_to_response
 from letters_app.models import Letter
