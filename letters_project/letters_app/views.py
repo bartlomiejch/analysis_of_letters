@@ -9,8 +9,12 @@ from django.core.context_processors import csrf
 def analize(text):
     my_list = text.split()
     words_only_list = [word.strip(string.punctuation) for word in my_list]
-    amount = Counter(words_only_list)
-    return amount.most_common(3)
+    long_word_list = []
+    for word in words_only_list:
+        if len(word) > 2 and word.lower() not in ('nie', 'się', 'jest'):
+            long_word_list.append(word)
+    amount = Counter(long_word_list)
+    return amount.most_common(5)
 
 
 def get_letter(request):
@@ -29,6 +33,10 @@ def get_letter(request):
             second_amount = words[1][1]
             third = words[2][0]
             third_amount = words[2][1]
+            fourth = words[3][0]
+            fourth_amount = words[3][1]
+            fifth = words[4][0]
+            fifth_amount = words[4][1]
             args = {}
             args['first'] = first
             args['first_amount'] = first_amount
@@ -36,6 +44,10 @@ def get_letter(request):
             args['second_amount'] = second_amount
             args['third'] = third
             args['third_amount'] = third_amount
+            args['fourth'] = fourth
+            args['fourth_amount'] = fourth_amount
+            args['fifth'] = fifth
+            args['fifth_amount'] = fifth_amount
             return render_to_response('result.html', args)
     else:
         form = LetterForm
